@@ -10,7 +10,7 @@ export default function withAuth(AuthComponent) {
         user: { userName: null },
       };
     }
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
       if (!Auth.loggedIn()) {
         this.props.history.replace("/Login");
       } else {

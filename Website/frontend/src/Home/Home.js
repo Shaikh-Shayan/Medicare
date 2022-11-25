@@ -19,7 +19,7 @@ import swal from "sweetalert";
 const img = require("../assets/loader.gif");
 
 class Home extends Component {
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.updateLoginAccountStatus();
 
     this.getTrans();
@@ -42,7 +42,7 @@ class Home extends Component {
           // console.log(err, accounts)
           if (err) {
             // console.log('An error occurred ' + err);
-          } else if (accounts[0] != res.address) {
+          } else if (accounts[0] !== res.address) {
             // alert( 'Please login into MetaMask with your registered account..!');
             swal({
               title: "Please Note",
@@ -65,7 +65,7 @@ class Home extends Component {
       // console.log(err, accounts)
       if (err) {
         // console.log('An error occurred ' + err);
-      } else if (accounts.length == 0) {
+      } else if (accounts.length === 0) {
         // alert( 'Please login to MetaMask..!');
 
         swal({
@@ -158,7 +158,7 @@ class Home extends Component {
     })
       .then((res) => {
         let a = Math.max(...res);
-        if (a == "-Infinity") {
+        if (a === "-Infinity") {
           this.setState({ maxeid: 100 });
         } else {
           this.setState({ maxeid: a + 1 });
@@ -185,7 +185,7 @@ class Home extends Component {
         .then((r) => {
           // console.log(r[0]);
           // console.log(this.state.typeofuser)
-          if (this.state.typeofuser == "Manufacturer") {
+          if (this.state.typeofuser === "Manufacturer") {
             var date = new Date();
             // console.log(Number(this.state.expire))
             date.setDate(date.getDate() + Number(this.state.expire));
@@ -243,7 +243,7 @@ class Home extends Component {
             // I'm deliberately missing gas option here
             // const data = await contract.methods.myMethod().send({ from: account, gasPrice });
           }
-          if (this.state.typeofuser == "Distributer") {
+          if (this.state.typeofuser === "Distributer") {
             let id = this.state.id;
             // console.log(id)
             const am = supplychain.methods
@@ -295,7 +295,7 @@ class Home extends Component {
                 this.setState({ loading: false });
               });
           }
-          if (this.state.typeofuser == "Retailer") {
+          if (this.state.typeofuser === "Retailer") {
             let id = this.state.id;
             const am = supplychain.methods
               .sell(this.state.sid)
@@ -436,7 +436,7 @@ class Home extends Component {
         .getAccounts()
         .then((r) => {
           // console.log(from)
-          if (this.state.typeofuser == "Distributer") {
+          if (this.state.typeofuser === "Distributer") {
             const am = supplychain.methods
               .acceptdist(sid, eid, from)
               .send({
@@ -465,7 +465,7 @@ class Home extends Component {
                 this.setState({ loading: false });
               });
           }
-          if (this.state.typeofuser == "Retailer") {
+          if (this.state.typeofuser === "Retailer") {
             const am = supplychain.methods
               .setretaildetails(sid, eid, from)
               .send({
@@ -515,7 +515,7 @@ class Home extends Component {
           .getAccounts()
           .then((r) => {
             // console.log(from)
-            if (this.state.typeofuser == "Distributer") {
+            if (this.state.typeofuser === "Distributer") {
               const am = supplychain.methods
                 .rdist(sid, eid, from)
                 .send({
@@ -542,7 +542,7 @@ class Home extends Component {
                   // console.log(err)
                   this.setState({ loading: false });
                 });
-            } else if (this.state.typeofuser == "Manufacturer") {
+            } else if (this.state.typeofuser === "Manufacturer") {
               const am = supplychain.methods
                 .rman(sid, eid, from)
                 .send({
@@ -663,7 +663,7 @@ class Home extends Component {
           .getAccounts()
           .then((r) => {
             // console.log(from)
-            if (this.state.typeofuser == "Distributer") {
+            if (this.state.typeofuser === "Distributer") {
               const am = supplychain.methods
                 .backtrack(sid, eid)
                 .send({
@@ -716,7 +716,7 @@ class Home extends Component {
     if (this.state.loading === true) {
       return (
         <div className="Loader">
-          <img className="Image" />
+          <img className="Image" alt="" />
         </div>
       );
     } else {
@@ -806,7 +806,7 @@ class Home extends Component {
           }
           hour = hour + 5;
           if (hour > 24) {
-            if (date != 31) {
+            if (date !== 31) {
               date = date + 1;
             } else {
               date = 1;
@@ -849,7 +849,7 @@ class Home extends Component {
                 >
                   {/* <Card.Title>{r.transid}</Card.Title> */}
                   <Card.Text>
-                    {r.medname != undefined ? (
+                    {r.medname !== undefined ? (
                       <div>
                         <p className="CardTitle">Medicine Name : </p>
                         <p
@@ -912,7 +912,7 @@ class Home extends Component {
       var colco = -1;
       if (this.state.notif.length) {
         notif = this.state.notif.map((r) => {
-          if (r.accepted == false) {
+          if (r.accepted === false) {
             count = count + 1;
           }
           if (colco === 1) {
@@ -921,11 +921,11 @@ class Home extends Component {
             colco = colco + 1;
           }
 
-          if (r.Toname == undefined) {
+          if (r.Toname === undefined) {
             r.Toname = "Customer";
           }
 
-          if (r.msg == undefined) {
+          if (r.msg === undefined) {
             // console.log("This is Proper medicine");
             return (
               <Col sm={4}>
@@ -945,7 +945,7 @@ class Home extends Component {
                       {
                         // console.log(r)
                       }
-                      {r.medname != undefined ? (
+                      {r.medname !== undefined ? (
                         <div>
                           <p className="CardTitle">Medicine Name : </p>
                           <p
@@ -1068,7 +1068,7 @@ class Home extends Component {
                       {
                         // console.log(r)
                       }
-                      {r.medname != undefined ? (
+                      {r.medname !== undefined ? (
                         <div>
                           <p className="CardTitle">Medicine Name : </p>
                           <p
@@ -1208,7 +1208,7 @@ class Home extends Component {
           ) : null}
 
           {this.state.addmedi === true ? (
-            this.state.typeofuser == "Manufacturer" ? (
+            this.state.typeofuser === "Manufacturer" ? (
               <Container style={{ marginTop: 50 }} className="addmedi">
                 <Row className="addmedirow">
                   <Col sm={3}>
@@ -1332,7 +1332,7 @@ class Home extends Component {
 
                 <br />
               </Container>
-            ) : this.state.typeofuser == "Distributer" ? (
+            ) : this.state.typeofuser === "Distributer" ? (
               <Container style={{ marginTop: 50 }} className="addmedi">
                 {" "}
                 <Row className="addmedirow">
@@ -1417,7 +1417,7 @@ class Home extends Component {
                   </Col>
                 </Row>
               </Container>
-            ) : this.state.typeofuser == "Retailer" ? (
+            ) : this.state.typeofuser === "Retailer" ? (
               <Container style={{ marginTop: 50 }} className="addmedi">
                 {" "}
                 <Row className="addmedirow"></Row>

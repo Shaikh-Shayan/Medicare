@@ -22,7 +22,7 @@ import swal from "sweetalert";
 const img = require("../assets/loader.gif");
 
 class Admin_Home extends Component {
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.getUsers();
     this.getDisplayUsers();
   }
@@ -214,7 +214,7 @@ class Admin_Home extends Component {
     this.setState({
       [x]: e.target.value,
     });
-    if (e.target.value == "") {
+    if (e.target.value === "") {
       // console.log("INSIDE")
       this.getUsers();
     }
@@ -224,7 +224,7 @@ class Admin_Home extends Component {
     if (this.state.loading === true) {
       return (
         <div className="Loader">
-          <img src={img} className="Image" />
+          <img src={img} className="Image" alt="" />
         </div>
       );
     } else {
@@ -343,7 +343,7 @@ class Admin_Home extends Component {
         // console.log("this is all users", this.state.displayuserlist)
 
         dispmanuuser = this.state.displayuserlist.map((r) => {
-          if (r.typeofuser == "Manufacturer") {
+          if (r.typeofuser === "Manufacturer") {
             manuc = manuc + 1;
             return (
               <Col sm={4}>
@@ -375,7 +375,7 @@ class Admin_Home extends Component {
         });
 
         dispdistuser = this.state.displayuserlist.map((r) => {
-          if (r.typeofuser == "Distributer") {
+          if (r.typeofuser === "Distributer") {
             distc = distc + 1;
             return (
               <Col sm={4}>
@@ -407,7 +407,7 @@ class Admin_Home extends Component {
         });
 
         dispretauser = this.state.displayuserlist.map((r) => {
-          if (r.typeofuser == "Retailer") {
+          if (r.typeofuser === "Retailer") {
             retac = retac + 1;
             return (
               <Col sm={4}>

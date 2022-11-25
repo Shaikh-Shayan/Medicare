@@ -3,8 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@metamask/legacy-web3": "^2.0.0",
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
+    "chokidar": "^2.1.8",
+    "debug": "^4.1.1",
+    "ethereum-common": "^0.2.1",
+    "har-validator": "^5.1.5",
     "jwt-decode": "^2.2.0",
     "mdbreact": "^4.19.2",
     "react": "^16.9.0",
@@ -13,6 +18,7 @@
     "react-dom": "^16.9.0",
     "react-icons": "^3.8.0",
     "react-scripts": "^3.3.0",
+    "stable": "^0.1.8",
     "sweetalert": "^2.1.2",
     "web3": "^1.0.0-beta.26"
   },
