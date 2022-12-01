@@ -5,6 +5,7 @@ import swal from "sweetalert";
 import { Form, Button } from "react-bootstrap";
 import AuthService from "./AuthService/AuthService";
 import datalist from "react-datalist";
+const loginBackground = require("./assets/loginBackground.png");
 
 class login extends Component {
   constructor(props) {
@@ -240,8 +241,8 @@ class login extends Component {
 
   render() {
     return (
-      <div className="loginMainDiv">
-        <div className="LFirst">
+      <div className="container">
+        {/* <div className="LFirst">
           <header className="toolbar">
             <nav className="nevigation_menu">
               <div className="Llogo_style">
@@ -249,296 +250,272 @@ class login extends Component {
               </div>
             </nav>
           </header>
+        </div> */}
+        <div className="row">
+          <div className="col-8">
+            {this.state.login === true ? (
+              <div className="login-container">
+                <div>
+                  <div>
+                    <h3 className="sign-in mb-5">Sign In</h3>
+                  </div>
+                  <div>
+                    <form>
+                      <fieldset>
+                        <legend>USERNAME</legend> 
+                        <input
+                          type="text"
+                          name="userName"
+                          required
+                          onChange={this.handleChange}
+                          className="sign-in-field"
+                          style={{ textIndent: 35 }}
+                        />
+                      </fieldset>
+                      <fieldset className="mt-4">
+                        <legend>PASSWORD</legend> 
+                        <input
+                          type="password"
+                          name="password"
+                          required
+                          onChange={this.handleChange}
+                          className="sign-in-field"
+                          style={{ textIndent: 35 }}
+                        />
+                      </fieldset>
+                      <Button
+                        type="submit"
+                        variant="primary"
+                        className="formbut"
+                        onClick={this.handleFormSubmit}
+                      >
+                        SIGN IN
+                      </Button>
+                    </form>
+                  </div>
+                  <div className="Lredirectdiv">
+                    <span>Not a member?</span>
+                    <span className="clickonme ml-2" onClick={this.loginstateHandler}>
+                      Sign Up
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ) : null}
+
+            {this.state.signup === true ? (
+              <div className="LSecond">
+                <div className="Logindiv">
+                  <div className="TopDesc">
+                    <h3>Sign Up</h3>
+                    <hr />
+                  </div>
+                  <div className="Lformdiv">
+                    <form>
+                      <div>
+                        <span style={{ float: "left", marginRight: 240 }}>
+                          Name:
+                        </span>
+                        <span style={{ color: "red", float: "left", fontSize: 16 }}>
+                          {this.state.formErrors.first}
+                        </span>
+                        <input
+                          type="text"
+                          name="name"
+                          required
+                          onChange={this.handleChange}
+                          style={{ border: "none", textIndent: 8 }}
+                        />
+                        <br />
+                        <br />
+                      </div>
+                      <div>
+                        <span style={{ float: "left", marginRight: 200 }}>
+                          Username:
+                        </span>
+                        <span style={{ color: "red", float: "left", fontSize: 16 }}>
+                          {this.state.formErrors.user}
+                        </span>
+                        <span style={{ color: "red", float: "left", fontSize: 16 }}>
+                          {this.state.checkforusername}
+                        </span>
+                        <input
+                          type="text"
+                          name="userName"
+                          required
+                          onChange={this.handleUsernameChange}
+                          style={{ border: "none", textIndent: 8 }}
+                        />
+                        <br />
+                        <br />
+                      </div>
+
+                      <div>
+                        <span style={{ float: "left", marginRight: 245 }}>
+                          Email:
+                        </span>
+                        <span style={{ color: "red", float: "left", fontSize: 16 }}>
+                          {this.state.formErrors.email}
+                        </span>
+                        <input
+                          type="text"
+                          name="email"
+                          required
+                          onChange={this.handleChange}
+                          style={{ border: "none", textIndent: 8 }}
+                        />
+                        <br />
+                        <br />
+                      </div>
+
+                      <div>
+                        <span style={{ float: "left" }}>MetaMask Address:</span>
+                        <span
+                          style={{ color: "red", float: "left", fontSize: 16 }}
+                        ></span>
+                        <input
+                          type="text"
+                          name="address"
+                          required
+                          onChange={this.handleChange}
+                          style={{ border: "none", textIndent: 8 }}
+                        />
+                        <br />
+                        <br />
+                      </div>
+
+                      <div>
+                        <span style={{ float: "left", marginRight: 230 }}>
+                          Phone:
+                        </span>
+                        <span style={{ color: "red", float: "left", fontSize: 16 }}>
+                          {this.state.formErrors.phone}
+                        </span>
+                        <input
+                          type="text"
+                          name="phone"
+                          required
+                          onChange={this.handleChange}
+                          style={{ border: "none", textIndent: 8 }}
+                        />
+                        <br />
+                        <br />
+                      </div>
+
+                      <Form.Group controlId="exampleForm.ControlSelect1">
+                        <span
+                          style={{
+                            float: "left",
+                            marginRight: 200,
+                            marginBottom: 16,
+                          }}
+                        >
+                          UserType:
+                        </span>
+                        <Form.Control
+                          as="select"
+                          style={{ border: "none" }}
+                          value={this.state.UserType}
+                          onChange={this.handleThisChange}
+                        >
+                          <option>Manufacturer</option>
+                          <option>Distributer</option>
+                          <option>Retailer</option>
+                        </Form.Control>
+                      </Form.Group>
+
+                      <div>
+                        <span style={{ float: "left" }}>Lisence No.:</span>
+                        <span
+                          style={{ color: "red", float: "left", fontSize: 16 }}
+                        ></span>
+                        <input
+                          type="text"
+                          name="LcNo"
+                          required
+                          onChange={this.handleChange}
+                          style={{ border: "none", textIndent: 8 }}
+                        />
+                        <br />
+                        <br />
+                      </div>
+
+                      <div>
+                        <span style={{ float: "left" }}>Location:</span>
+                        <span
+                          style={{ color: "red", float: "left", fontSize: 16 }}
+                        ></span>
+                        <input
+                          type="text"
+                          name="Location"
+                          list="data"
+                          required
+                          onChange={this.handleChange}
+                          style={{ border: "none", textIndent: 8 }}
+                        />
+                        <br />
+                        <br />
+
+                        <datalist id="data">
+                          {this.state.data.map((k) => (
+                            <option key={k} value={k} />
+                          ))}
+                        </datalist>
+                      </div>
+
+                      <div>
+                        <span style={{ float: "left", marginRight: 200 }}>
+                          Password:
+                        </span>
+                        <span style={{ color: "red", float: "left", fontSize: 16 }}>
+                          {this.state.formErrors.password}
+                        </span>
+                        <input
+                          type="password"
+                          name="password"
+                          required
+                          onChange={this.handleChange}
+                          style={{ border: "none", textIndent: 8 }}
+                        />
+                        <br />
+                        <br />
+                      </div>
+                      <Button
+                        type="submit"
+                        variant="primary"
+                        className="formbut"
+                        disabled={!this.state.formValid1}
+                        onClick={this.handleFormSubmit1}
+                      >
+                        Sign Up
+                      </Button>
+                      <br />
+                      <br />
+                    </form>
+                  </div>
+
+                  <hr />
+                  <div className="Lredirectdiv">
+                    <p>Already a member</p>
+                    <p className="clickonme" onClick={this.signupstateHandler}>
+                      Sign In
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ) : null}
+          </div>
+          <div className="col-4">
+            <img src={loginBackground} alt="loginBackground" />
+            <div className="login-sidebar">
+              <div className="sidebar-text">
+                <h3 className="sidebar-title">Welcome to</h3>
+                <h2 className="sidebar-subtitle">PHARMACHAIN</h2>
+                <p className="sidebar-content mt-5">Pharmachain is a supply chain software helping in tracking the transaction of medicines from Manufacturer to distributor to retailer. Increase your productivity with Pharmachain!</p>
+              </div>  
+            </div>
+          </div>  
         </div>
-        {this.state.login === true ? (
-          <div className="LSecond">
-            <div className="Logindiv">
-              <div className="TopDesc">
-                <h3>Login</h3>
-                <hr />
-              </div>
-              <div className="Lformdiv">
-                <form>
-                  <div>
-                    <span style={{ float: "left", marginRight: 250 }}>
-                      Username:
-                    </span>
-                    <span
-                      style={{ color: "red", float: "left", fontSize: 16 }}
-                    ></span>
-                    <input
-                      type="text"
-                      name="userName"
-                      required
-                      onChange={this.handleChange}
-                      style={{ border: "none", textIndent: 35 }}
-                    />
-                    <br />
-                    <br />
-                    <p
-                      style={{
-                        marginTop: -56,
-                        fontSize: 17,
-                        marginLeft: 10,
-                        opacity: 0.7,
-                        width: 20,
-                      }}
-                    >
-                      <FaUserAlt />
-                    </p>
-                  </div>
-                  <div>
-                    <span style={{ float: "left", marginRight: 250 }}>
-                      Password:
-                    </span>
-                    <span
-                      style={{ color: "red", float: "left", fontSize: 16 }}
-                    ></span>
-                    <input
-                      type="password"
-                      name="password"
-                      required
-                      onChange={this.handleChange}
-                      style={{ border: "none", textIndent: 35 }}
-                    />
-                    <br />
-                    <br />
-                    <p
-                      style={{
-                        marginTop: -56,
-                        fontSize: 17,
-                        marginLeft: 10,
-                        opacity: 0.7,
-                        width: 20,
-                      }}
-                    >
-                      <FaKey />
-                    </p>
-                  </div>
-                  <Button
-                    type="submit"
-                    variant="primary"
-                    className="formbut"
-                    onClick={this.handleFormSubmit}
-                  >
-                    Sign In
-                  </Button>
-                  <br />
-                  <br />
-                </form>
-              </div>
-              <hr />
-              <div className="Lredirectdiv">
-                <p>Not a member</p>
-                <p className="clickonme" onClick={this.loginstateHandler}>
-                  Sign Up
-                </p>
-              </div>
-            </div>
-          </div>
-        ) : null}
-
-        {this.state.signup === true ? (
-          <div className="LSecond">
-            <div className="Logindiv">
-              <div className="TopDesc">
-                <h3>Sign Up</h3>
-                <hr />
-              </div>
-              <div className="Lformdiv">
-                <form>
-                  <div>
-                    <span style={{ float: "left", marginRight: 240 }}>
-                      Name:
-                    </span>
-                    <span style={{ color: "red", float: "left", fontSize: 16 }}>
-                      {this.state.formErrors.first}
-                    </span>
-                    <input
-                      type="text"
-                      name="name"
-                      required
-                      onChange={this.handleChange}
-                      style={{ border: "none", textIndent: 8 }}
-                    />
-                    <br />
-                    <br />
-                  </div>
-                  <div>
-                    <span style={{ float: "left", marginRight: 200 }}>
-                      Username:
-                    </span>
-                    <span style={{ color: "red", float: "left", fontSize: 16 }}>
-                      {this.state.formErrors.user}
-                    </span>
-                    <span style={{ color: "red", float: "left", fontSize: 16 }}>
-                      {this.state.checkforusername}
-                    </span>
-                    <input
-                      type="text"
-                      name="userName"
-                      required
-                      onChange={this.handleUsernameChange}
-                      style={{ border: "none", textIndent: 8 }}
-                    />
-                    <br />
-                    <br />
-                  </div>
-
-                  <div>
-                    <span style={{ float: "left", marginRight: 245 }}>
-                      Email:
-                    </span>
-                    <span style={{ color: "red", float: "left", fontSize: 16 }}>
-                      {this.state.formErrors.email}
-                    </span>
-                    <input
-                      type="text"
-                      name="email"
-                      required
-                      onChange={this.handleChange}
-                      style={{ border: "none", textIndent: 8 }}
-                    />
-                    <br />
-                    <br />
-                  </div>
-
-                  <div>
-                    <span style={{ float: "left" }}>MetaMask Address:</span>
-                    <span
-                      style={{ color: "red", float: "left", fontSize: 16 }}
-                    ></span>
-                    <input
-                      type="text"
-                      name="address"
-                      required
-                      onChange={this.handleChange}
-                      style={{ border: "none", textIndent: 8 }}
-                    />
-                    <br />
-                    <br />
-                  </div>
-
-                  <div>
-                    <span style={{ float: "left", marginRight: 230 }}>
-                      Phone:
-                    </span>
-                    <span style={{ color: "red", float: "left", fontSize: 16 }}>
-                      {this.state.formErrors.phone}
-                    </span>
-                    <input
-                      type="text"
-                      name="phone"
-                      required
-                      onChange={this.handleChange}
-                      style={{ border: "none", textIndent: 8 }}
-                    />
-                    <br />
-                    <br />
-                  </div>
-
-                  <Form.Group controlId="exampleForm.ControlSelect1">
-                    <span
-                      style={{
-                        float: "left",
-                        marginRight: 200,
-                        marginBottom: 16,
-                      }}
-                    >
-                      UserType:
-                    </span>
-                    <Form.Control
-                      as="select"
-                      style={{ border: "none" }}
-                      value={this.state.UserType}
-                      onChange={this.handleThisChange}
-                    >
-                      <option>Manufacturer</option>
-                      <option>Distributer</option>
-                      <option>Retailer</option>
-                    </Form.Control>
-                  </Form.Group>
-
-                  <div>
-                    <span style={{ float: "left" }}>Lisence No.:</span>
-                    <span
-                      style={{ color: "red", float: "left", fontSize: 16 }}
-                    ></span>
-                    <input
-                      type="text"
-                      name="LcNo"
-                      required
-                      onChange={this.handleChange}
-                      style={{ border: "none", textIndent: 8 }}
-                    />
-                    <br />
-                    <br />
-                  </div>
-
-                  <div>
-                    <span style={{ float: "left" }}>Location:</span>
-                    <span
-                      style={{ color: "red", float: "left", fontSize: 16 }}
-                    ></span>
-                    <input
-                      type="text"
-                      name="Location"
-                      list="data"
-                      required
-                      onChange={this.handleChange}
-                      style={{ border: "none", textIndent: 8 }}
-                    />
-                    <br />
-                    <br />
-
-                    <datalist id="data">
-                      {this.state.data.map((k) => (
-                        <option key={k} value={k} />
-                      ))}
-                    </datalist>
-                  </div>
-
-                  <div>
-                    <span style={{ float: "left", marginRight: 200 }}>
-                      Password:
-                    </span>
-                    <span style={{ color: "red", float: "left", fontSize: 16 }}>
-                      {this.state.formErrors.password}
-                    </span>
-                    <input
-                      type="password"
-                      name="password"
-                      required
-                      onChange={this.handleChange}
-                      style={{ border: "none", textIndent: 8 }}
-                    />
-                    <br />
-                    <br />
-                  </div>
-                  <Button
-                    type="submit"
-                    variant="primary"
-                    className="formbut"
-                    disabled={!this.state.formValid1}
-                    onClick={this.handleFormSubmit1}
-                  >
-                    Sign Up
-                  </Button>
-                  <br />
-                  <br />
-                </form>
-              </div>
-
-              <hr />
-              <div className="Lredirectdiv">
-                <p>Already a member</p>
-                <p className="clickonme" onClick={this.signupstateHandler}>
-                  Sign In
-                </p>
-              </div>
-            </div>
-          </div>
-        ) : null}
       </div>
     );
   }
